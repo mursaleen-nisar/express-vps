@@ -3,7 +3,7 @@ import express from "express";
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("Server is healthy.");
+  res.json({ message: "Server is healthy v2." });
 });
 
 app.listen(3000, () => {
