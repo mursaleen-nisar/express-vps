@@ -3,7 +3,7 @@ import express from "express";
 const app = express();
 
 app.get("/", (req, res) => {
-  res.json({ message: "Server is healthy v3. Automted CI deployment." });
+  res.json({ message: "Server is healthy v3. Automted CI deployment. Included docker" });
 });
 
 app.listen(3000, () => {
