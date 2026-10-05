@@ -37,7 +37,11 @@ jobs:
                 username: mursaleennisar
                 key: ${{ secrets.PRIVATE_KEY }}
                 script: |
-                  cd /home/mursaleennisar/express-vps
-                  git pull
-                  npm install
-                  pm2 restart 0
+                  # Kill existing container if running
+                  sudo docker rm -f express-vps || true
+
+                  # Pull latest image from Docker Hub
+                  sudo docker pull mursaleennisar/express-vps
+
+                  # Run new container
+                  sudo docker run -d -p 3000:3000 mursaleennisar/express-vps
