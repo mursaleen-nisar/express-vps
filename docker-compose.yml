@@ -1,0 +1,20 @@
+services:
+  nodejs-server:
+    image: mursaleennisar/express-vps
+    deploy:
+      replicas: 5
+    networks:
+      - node-internal
+
+  caddy:
+    image: caddy:latest
+    ports:
+      - '80:80'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    networks:
+      - node-internal
+
+networks:
+  node-internal:
+    driver: bridge

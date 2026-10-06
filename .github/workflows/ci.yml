@@ -37,11 +37,17 @@ jobs:
                 username: mursaleennisar
                 key: ${{ secrets.PRIVATE_KEY }}
                 script: |
-                  # Kill existing container if running
-                  docker rm -f express-vps || true
+                  # CD /home/mursaleennisar/express-vps
+                  cd /home/mursaleennisar/express-vps
 
-                  # Pull latest image from Docker Hub
-                  docker pull mursaleennisar/express-vps
+                  # git pull
+                  git pull origin main
 
-                  # Run new container
-                  docker run -d --name express-vps --restart unless-stopped -p 80:3000 mursaleennisar/express-vps
+                  # make sure to pull a fresh copy of piyushgargdev/chaicode-node
+                  docker compose pull
+
+                  # docker compose up -d
+                  docker compose up -d
+
+                  # Clean up old/unused images
+                  docker image prune -f
