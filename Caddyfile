@@ -1,4 +1,6 @@
-:80 {
+forgefluxhq.com {
+    tls mursaleen@forgefluxhq.com
+    
     handle {
         reverse_proxy nodejs-server:3000 {
             header_up Host {host}
